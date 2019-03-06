@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DecoradoImageView">
+        <attr name="img_src" format="reference" />
+        <attr name="img_radius" format="float" />
+        <attr name="error_message" format="string"/>
+        <attr name="android:scaleType"/>
+        <attr name="img_height" format="integer"/>
+        <attr name="img_width" format="integer"/>
+    </declare-styleable>
+</resources>
