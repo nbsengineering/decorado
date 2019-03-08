@@ -1,9 +1,10 @@
 package com.nbs.decorado
 
-import android.content.Context
-import android.util.DisplayMetrics
+import android.content.res.Resources
 
-internal fun pxToDp(px: Int, context : Context): Int {
-    val displayMetrics = context.resources.displayMetrics
-    return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT))
-}
+
+val Int.dp: Int
+    get() = (this / Resources.getSystem().displayMetrics.density).toInt()
+
+val Int.px: Int
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()

@@ -5,7 +5,9 @@
         <attr name="img_radius" format="float" />
         <attr name="error_message" format="string"/>
         <attr name="android:scaleType"/>
-        <attr name="img_height" format="integer"/>
-        <attr name="img_width" format="integer"/>
+        <attr name="img_def" format="reference"/>
+        <attr name="img_height_def" format="integer"/>
+        <attr name="img_width_def" format="integer"/>
+        <attr name="need_default_image" format="boolean"/>
     </declare-styleable>
 </resources>

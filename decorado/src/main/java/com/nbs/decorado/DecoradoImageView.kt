@@ -19,17 +19,23 @@ class DecoradoImageView : BaseRichView, ErrorableView {
 
     private lateinit var cvImgSrc: MaterialCardView
 
+    private lateinit var imgDef: ImageView
+
     private var imgDrawable: Drawable? = null
+
+    private var imgDrawableDef: Drawable? = null
 
     private var errorMessage: String? = ""
 
     private var cornerRadius: Float = 0.toFloat()
 
-    private var imgHeight: Int = 0
+    private var imgHeightDef: Int = 0
 
-    private var imgWidth: Int = 0
+    private var imgWidthDef: Int = 0
 
     private var scaleIndex = -1
+
+    private var isNeedDeafult = false
 
     constructor(context: Context) : super(context)
 
@@ -50,14 +56,18 @@ class DecoradoImageView : BaseRichView, ErrorableView {
         imgSrc = view.find(R.id.imgSrc)
         tvError = view.find(R.id.tvError)
         cvImgSrc = view.find(R.id.cvImg)
+        imgDef = view.find(R.id.imgDef)
     }
 
     override fun initView(context: Context, attrs: AttributeSet?) {
         super.initView(context, attrs)
         parseAttrs(attrs)
         setImageSrc(imgDrawable)
-        setSizeImage(imgWidth, imgHeight)
+        setImageDef(imgDrawableDef)
+        setSizeImage()
         setScaleTypeImage(scaleIndex)
+        setDefaultImage()
+        setRadiusImage()
     }
 
     override fun hideError() {
@@ -67,6 +77,7 @@ class DecoradoImageView : BaseRichView, ErrorableView {
     override fun isErrorShowing(): Boolean = tvError.visibility == View.VISIBLE
 
     override fun showError(errorMessage: String) {
+        tvError.visibility = View.VISIBLE
         tvError.text = errorMessage
     }
 
@@ -77,9 +88,11 @@ class DecoradoImageView : BaseRichView, ErrorableView {
                 imgDrawable = typedArray.getDrawable(R.styleable.DecoradoImageView_img_src)
                 cornerRadius = typedArray.getFloat(R.styleable.DecoradoImageView_img_radius, 0f)
                 errorMessage = typedArray.getString(R.styleable.DecoradoImageView_error_message)
-                imgWidth = typedArray.getInt(R.styleable.DecoradoImageView_img_width, 0)
-                imgHeight = typedArray.getInt(R.styleable.DecoradoImageView_img_height, 0)
                 scaleIndex = typedArray.getInt(R.styleable.DecoradoImageView_android_scaleType, -1)
+                imgDrawableDef = typedArray.getDrawable(R.styleable.DecoradoImageView_img_def)
+                imgWidthDef = typedArray.getInt(R.styleable.DecoradoImageView_img_width_def, 0)
+                imgHeightDef = typedArray.getInt(R.styleable.DecoradoImageView_img_height_def, 0)
+                isNeedDeafult = typedArray.getBoolean(R.styleable.DecoradoImageView_need_default_image, false)
             } finally {
                 typedArray.recycle()
             }
@@ -96,18 +109,31 @@ class DecoradoImageView : BaseRichView, ErrorableView {
         }
     }
 
-    private fun setSizeImage(imgWidth: Int, imgHeight: Int) {
-        val params = cvImgSrc.layoutParams
-        params.width = if (imgWidth == 0) LayoutParams.MATCH_PARENT else pxToDp(imgWidth, context)
-        params.height = if (imgHeight == 0) LayoutParams.MATCH_PARENT else pxToDp(imgHeight, context)
-        cvImgSrc.layoutParams = params
+    private fun setSizeImage() {
+        val paramsDef = imgDef.layoutParams
+        paramsDef.width = if (imgWidthDef == 0) LayoutParams.MATCH_PARENT else imgWidthDef.dp
+        paramsDef.height = if (imgHeightDef == 0) LayoutParams.MATCH_PARENT else imgHeightDef.dp
+        imgDef.layoutParams = paramsDef
     }
 
     private fun setImageSrc(imgDrawable: Drawable?) {
-        imgSrc.setImageDrawable(imgDrawable)
+        if (imgDrawable != null){
+            imgSrc.setImageDrawable(imgDrawable)
+        }
     }
 
+    private fun setImageDef(imgDrawableDef: Drawable?) {
+        if (imgDrawableDef != null) {
+            imgDef.setImageDrawable(imgDrawableDef)
+        }
+    }
 
+    private fun setDefaultImage() {
+        imgDef.visibility = if (isNeedDeafult) View.VISIBLE else View.INVISIBLE
+    }
 
+    private fun setRadiusImage() {
+        cvImgSrc.radius = cornerRadius
+    }
 
 }
