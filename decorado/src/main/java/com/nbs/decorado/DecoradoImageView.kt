@@ -17,7 +17,7 @@ class DecoradoImageView : BaseRichView, ErrorableView {
 
     private lateinit var tvError: TextView
 
-    private lateinit var cvImgSrc: MaterialCardView
+//    private lateinit var cvImgSrc: MaterialCardView
 
     private lateinit var imgDef: ImageView
 
@@ -55,7 +55,7 @@ class DecoradoImageView : BaseRichView, ErrorableView {
     override fun bindView(view: View) {
         imgSrc = view.find(R.id.imgSrc)
         tvError = view.find(R.id.tvError)
-        cvImgSrc = view.find(R.id.cvImg)
+//        cvImgSrc = view.find(R.id.cvImg)
         imgDef = view.find(R.id.imgDef)
     }
 
@@ -71,7 +71,7 @@ class DecoradoImageView : BaseRichView, ErrorableView {
     }
 
     override fun hideError() {
-        tvError.visibility = View.GONE
+        tvError.visibility = View.INVISIBLE
     }
 
     override fun isErrorShowing(): Boolean = tvError.visibility == View.VISIBLE
@@ -89,9 +89,9 @@ class DecoradoImageView : BaseRichView, ErrorableView {
                 cornerRadius = typedArray.getFloat(R.styleable.DecoradoImageView_img_radius, 0f)
                 errorMessage = typedArray.getString(R.styleable.DecoradoImageView_error_message)
                 scaleIndex = typedArray.getInt(R.styleable.DecoradoImageView_android_scaleType, -1)
-                imgDrawableDef = typedArray.getDrawable(R.styleable.DecoradoImageView_img_def)
-                imgWidthDef = typedArray.getInt(R.styleable.DecoradoImageView_img_width_def, 0)
-                imgHeightDef = typedArray.getInt(R.styleable.DecoradoImageView_img_height_def, 0)
+                imgDrawableDef = typedArray.getDrawable(R.styleable.DecoradoImageView_img_default)
+                imgWidthDef = typedArray.getInt(R.styleable.DecoradoImageView_img_width_default, 0)
+                imgHeightDef = typedArray.getInt(R.styleable.DecoradoImageView_img_height_default, 0)
                 isNeedDeafult = typedArray.getBoolean(R.styleable.DecoradoImageView_need_default_image, false)
             } finally {
                 typedArray.recycle()
@@ -133,7 +133,7 @@ class DecoradoImageView : BaseRichView, ErrorableView {
     }
 
     private fun setRadiusImage() {
-        cvImgSrc.radius = cornerRadius
+//        cvImgSrc.radius = cornerRadius
     }
 
 }
