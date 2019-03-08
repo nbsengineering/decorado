@@ -2,7 +2,6 @@
 <resources>
     <declare-styleable name="DecoradoImageView">
         <attr name="img_src" format="reference" />
-        <attr name="img_radius" format="float" />
         <attr name="error_message" format="string"/>
         <attr name="android:scaleType"/>
         <attr name="img_default" format="reference"/>

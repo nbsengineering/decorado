@@ -2,7 +2,6 @@ package com.nbs.decorado
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.support.design.card.MaterialCardView
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
@@ -16,8 +15,6 @@ class DecoradoImageView : BaseRichView, ErrorableView {
     private lateinit var imgSrc: ImageView
 
     private lateinit var tvError: TextView
-
-//    private lateinit var cvImgSrc: MaterialCardView
 
     private lateinit var imgDef: ImageView
 
@@ -55,7 +52,6 @@ class DecoradoImageView : BaseRichView, ErrorableView {
     override fun bindView(view: View) {
         imgSrc = view.find(R.id.imgSrc)
         tvError = view.find(R.id.tvError)
-//        cvImgSrc = view.find(R.id.cvImg)
         imgDef = view.find(R.id.imgDef)
     }
 
@@ -67,7 +63,6 @@ class DecoradoImageView : BaseRichView, ErrorableView {
         setSizeImage()
         setScaleTypeImage(scaleIndex)
         setDefaultImage()
-        setRadiusImage()
     }
 
     override fun hideError() {
@@ -86,7 +81,6 @@ class DecoradoImageView : BaseRichView, ErrorableView {
             val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DecoradoImageView)
             try {
                 imgDrawable = typedArray.getDrawable(R.styleable.DecoradoImageView_img_src)
-                cornerRadius = typedArray.getFloat(R.styleable.DecoradoImageView_img_radius, 0f)
                 errorMessage = typedArray.getString(R.styleable.DecoradoImageView_error_message)
                 scaleIndex = typedArray.getInt(R.styleable.DecoradoImageView_android_scaleType, -1)
                 imgDrawableDef = typedArray.getDrawable(R.styleable.DecoradoImageView_img_default)
@@ -130,10 +124,6 @@ class DecoradoImageView : BaseRichView, ErrorableView {
 
     private fun setDefaultImage() {
         imgDef.visibility = if (isNeedDeafult) View.VISIBLE else View.INVISIBLE
-    }
-
-    private fun setRadiusImage() {
-//        cvImgSrc.radius = cornerRadius
     }
 
 }
