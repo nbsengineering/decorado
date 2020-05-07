@@ -3,10 +3,13 @@ package com.nbs.decorado.customview
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import com.nbs.decorado.toCurrencyValue
+import java.text.NumberFormat
 import java.util.Locale
 
 class CurrencyTextWatcher(private val editText: EditText, private val prefix: String, private val locale: Locale) : TextWatcher {
+
+    private val LANGUAGE_INDONESIA = "id"
+    private val COUNTRY_INDONESIA = "ID"
 
     private var previousCleanString: String? = null
 
@@ -67,5 +70,9 @@ class CurrencyTextWatcher(private val editText: EditText, private val prefix: St
             maximumFractionDigits = fractionDigit
         }
         return getNormalizedValue(currencyFormat.format(this))
+    }
+
+    private fun getNormalizedValue(value: String): String {
+        return value.substring(2, value.length)
     }
 }
