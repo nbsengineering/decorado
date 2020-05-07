@@ -5,7 +5,7 @@ import android.content.res.TypedArray
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
-import com.nbs.nucleox.R
+import com.nbs.decorado.R
 
 class EllipseView : AppCompatTextView {
 

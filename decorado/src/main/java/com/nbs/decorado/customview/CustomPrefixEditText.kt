@@ -2,9 +2,9 @@ package com.nbs.decorado.customview
 
 import android.content.Context
 import android.graphics.Canvas
-import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
-import com.nbs.nucleox.R
+import android.util.AttributeSet
+import com.nbs.decorado.R
 
 class CustomPrefixEditText : AppCompatEditText {
 

@@ -10,7 +10,6 @@ import android.graphics.Canvas
 import com.nbs.decorado.COUNTRY_INDONESIA
 import com.nbs.decorado.LANGUAGE_INDONESIA
 import com.nbs.decorado.getCurrencySymbol
-import com.nbs.nucleox.R
 import java.util.Locale
 
 class CurrencyEditTextView : AppCompatEditText {
