@@ -20,7 +20,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
-import com.nbs.nucleox.R
+import com.nbs.decorado.R
 
 class CircleImageView : AppCompatImageView {
 

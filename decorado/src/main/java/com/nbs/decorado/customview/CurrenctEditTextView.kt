@@ -7,15 +7,17 @@ import android.text.InputFilter
 import android.text.InputType
 import android.util.AttributeSet
 import android.graphics.Canvas
-import com.nbs.decorado.COUNTRY_INDONESIA
-import com.nbs.decorado.LANGUAGE_INDONESIA
-import com.nbs.decorado.getCurrencySymbol
-import com.nbs.nucleox.R
+import com.nbs.decorado.R
+import java.util.Currency
 import java.util.Locale
 
 class CurrencyEditTextView : AppCompatEditText {
 
     // Use indonesia locale
+
+    private val LANGUAGE_INDONESIA = "id"
+
+    private val COUNTRY_INDONESIA = "ID"
 
     private var locale: Locale = Locale(LANGUAGE_INDONESIA, COUNTRY_INDONESIA)
 

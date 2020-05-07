@@ -2,10 +2,10 @@ package com.nbs.decorado.customview
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.ImageView
-import com.nbs.nucleox.R
+import androidx.appcompat.widget.AppCompatImageView
+import com.nbs.decorado.R
 
-class RatioImageView : ImageView {
+class RatioImageView : AppCompatImageView {
     // Summary :
     // don't set this RationImageView with wrap_content because will only return 1 in measuredWidth and measureHeight
     // widthRatio > heightRatio will using your measuredWidth on height
@@ -24,7 +24,7 @@ class RatioImageView : ImageView {
         parseAttrs(attrs)
     }
 
-    fun setRatio(widthRatio: Int, heightRatio: Int){
+    fun setRatio(widthRatio: Int, heightRatio: Int) {
         this.widthRatio = widthRatio
         this.heightRatio = heightRatio
     }
