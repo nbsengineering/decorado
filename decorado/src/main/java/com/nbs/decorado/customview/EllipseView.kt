@@ -41,7 +41,7 @@ class EllipseView : AppCompatTextView {
         drawable!!.shape = GradientDrawable.RECTANGLE
         drawable!!.setStroke(strokeWidth, strokeColor)
         drawable!!.cornerRadius = cornerRadius.toFloat()
-        drawable!!.setColor(if (isEnable) backgroundColor else resources.getColor(R.color.material_on_background_disabled))
+        drawable!!.setColor(if (isEnable) backgroundColor else resources.getColor(R.color.colorGray))
         background = drawable
         setDisableEllipseView(isDisable)
     }
@@ -75,13 +75,13 @@ class EllipseView : AppCompatTextView {
 
     fun setDisableEllipseView(isDisable: Boolean) {
         this.isDisable = isDisable
-        setBackgroundColor(if (isDisable) resources.getColor(R.color.material_on_background_disabled) else backgroundColor)
+        setBackgroundColor(if (isDisable) resources.getColor(R.color.colorGray) else backgroundColor)
         isEnabled = !isDisable
     }
 
     fun setEnabledEllipseView(isEnable: Boolean) {
         isEnabled = isEnable
-        setBackgroundColor(if (isEnable) backgroundColor else resources.getColor(R.color.material_on_background_disabled))
+        setBackgroundColor(if (isEnable) backgroundColor else resources.getColor(R.color.colorGray))
         this.isEnable = isEnable
     }
 }
